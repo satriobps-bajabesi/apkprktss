@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-    <title>Praktis</title>
-    <meta name="theme-color" content="#1e40af">
+    <title>Project Practice</title>
     <style>
         /* Efek Hover untuk Menu New Arrival */
        .card-arrival:hover { border-color: #f43f5e; box-shadow: 0 0 25px rgba(244, 63, 94, 0.4); }
@@ -348,13 +347,6 @@
             .main-header h1 { letter-spacing: 1px; }
             .summary-card { min-width: 100%; }
         }
-
-        /* Monitor / layar lebar (desktop besar): batasi lebar panel & filter
-           supaya tidak terlalu renggang saat dibuka di layar besar */
-        @media (min-width: 1400px) {
-            .sub-page { max-width: 1440px; margin: 0 auto; }
-            .filter-box { max-width: 240px; }
-        }
     </style>
 </head>
 <body>
@@ -622,8 +614,6 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                     <button id="btn-download-pl" class="btn-yellow">📥 Download Hasil PL (.xlsx)</button>
                 </div>
 
-                <div class="category-summary-container" id="box-summary-pl"></div>
-
                 <div class="dashboard-layout">
                     <div class="sidebar-filters">
                         <h3>Filters Analisis</h3>
@@ -664,7 +654,6 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                                         <th onclick="urutkanDataPL('PriceAwal')">Price Awal ⇅</th>
                                         <th onclick="urutkanDataPL('DiscountPL')" class="th-pl">Discount PL ⇅</th>
                                         <th onclick="urutkanDataPL('PricePL')" class="th-pl">Price PL ⇅</th>
-                                        <th onclick="urutkanDataPL('Qty')">Qty ⇅</th>
                                         <th onclick="urutkanDataPL('Status')">Status ⇅</th>
                                     </tr>
                                 </thead>
@@ -1222,7 +1211,7 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
         
         const MAP_LEN_VAL = {
             7: 4, 8: 5, 9: 6, 10: 10, 11: 8, 12: 12, 13: 10, 14: 9,
-            15: 9, 16: 10, 17: 11, 18: 12, 19: 11, 20: 12, 21: 12, 22: 13, 23: 14
+            15: 9, 16: 11, 17: 11, 18: 12, 19: 11, 20: 12, 21: 12, 22: 13, 23: 14
         };
 
         // Cari posisi "/" pemisah GenArtikel/Deskripsi yang sebenarnya (diapit spasi " / ").
@@ -1341,19 +1330,6 @@ function jalankanFilter() {
     
     tampilKeTabel(DATA_TERFILTER_SAAT_INI);
 }
-
-// PENGAMAN TAMBAHAN: sebagian browser/webview Android kadang tidak
-// men-trigger atribut onchange bawaan pada <select>. Baris di bawah
-// memasang event listener langsung via JS sebagai jalur cadangan,
-// supaya filter Auto Stock (Brand/Divisi/Discount/Price) tetap
-// berfungsi walau onchange inline gagal ke-trigger di HP tertentu.
-['filter-brand', 'filter-category', 'filter-discount', 'filter-price'].forEach(function(idEl) {
-    const el = document.getElementById(idEl);
-    if (el) {
-        el.addEventListener('change', jalankanFilter);
-        el.addEventListener('input', jalankanFilter);
-    }
-});
 
         function urutkanData(kolom) { if (statusSortir.Kolom === kolom) { statusSortir.Stat = !statusSortir.Stat; } else { statusSortir.Kolom = kolom; statusSortir.Stat = true; } DATA_TERFILTER_SAAT_INI.sort((a, b) => { let valA = a[kolom]; let valB = b[kolom]; if (typeof valA === 'string') return statusSortir.Stat ? valA.localeCompare(valB) : valB.localeCompare(valA); else return statusSortir.Stat ? valA - valB : valB - valA; }); tampilKeTabel(DATA_TERFILTER_SAAT_INI); }
         function tampilKeTabel(dataArray) {
@@ -1529,13 +1505,13 @@ function jalankanFilter() {
                     let temporaryPivotMap = {}; let setBrandsPL = new Set(); let setCategoriesPL = new Set();
                     for (let i = 2; i < rows.length; i++) {
                         const row = rows[i]; if (!row) continue; if (row[5] === undefined || row[5] === null || row[5].toString().trim() === "") continue; if (row[4] === undefined || row[4] === "") continue; if (row[0] && row[0].toString().trim() === "Grand Total For Stock") continue; if (row[1] && row[1].toString().trim() === "14737") continue;
-                        const dataKolomE = row[4].toString(); const hargaRetailAwal = bersihkanAngka(row[6]); const qtyPL = parseInt(row[7]) || 0; let artikel = "";
+                        const dataKolomE = row[4].toString(); const hargaRetailAwal = bersihkanAngka(row[6]); let artikel = "";
                         if (dataKolomE.includes('/')) { let firstSlashIndex = cariIndexSlashPemisah(dataKolomE); let teksSebelumSlashBersih = dataKolomE.substring(0, firstSlashIndex).trim(); let b2 = teksSebelumSlashBersih.length; let jumlahPotong = MAP_LEN_VAL[b2] !== undefined ? MAP_LEN_VAL[b2] : 12; artikel = teksSebelumSlashBersih.substring(0, jumlahPotong).replace(/\s+/g, '').trim(); } else { artikel = dataKolomE.trim().substring(0, 12).replace(/\s+/g, '').trim(); }
                         let deskripsiFinal = vlookupKamusDeskripsi[artikel] || "NO DESCRIPTION"; let brandFinal = vlookupKamusBrand[artikel] || "UNKNOWN"; let categoryFinal = vlookupKamusCategory[artikel] || "UNKNOWN";
                         setBrandsPL.add(brandFinal); setCategoriesPL.add(categoryFinal);
                         let discountAwal = hitungDiscountDariHarga(hargaRetailAwal); let hargaRetailPL = kamusPLMentah[artikel] !== undefined ? kamusPLMentah[artikel] : hargaRetailAwal; let discountPL = hitungDiscountDariHarga(hargaRetailPL);
                         let statusHarga = "Normal"; if (kamusPLMentah[artikel] !== undefined) { if (hargaRetailPL < hargaRetailAwal) statusHarga = "Markdown"; else if (hargaRetailPL > hargaRetailAwal) statusHarga = "Markup"; }
-                        if (!temporaryPivotMap[artikel]) { temporaryPivotMap[artikel] = { Brand: brandFinal, Category: categoryFinal, Artikel: artikel, Deskripsi: deskripsiFinal, DiscountAwal: discountAwal, PriceAwal: hargaRetailAwal, DiscountPL: discountPL, PricePL: hargaRetailPL, Status: statusHarga, Qty: qtyPL }; } else { temporaryPivotMap[artikel].Qty += qtyPL; }
+                        if (!temporaryPivotMap[artikel]) { temporaryPivotMap[artikel] = { Brand: brandFinal, Category: categoryFinal, Artikel: artikel, Deskripsi: deskripsiFinal, DiscountAwal: discountAwal, PriceAwal: hargaRetailAwal, DiscountPL: discountPL, PricePL: hargaRetailPL, Status: statusHarga }; }
                     }
                     MASTER_DATA_PL = Object.values(temporaryPivotMap); DATA_TERFILTER_PL = [...MASTER_DATA_PL];
                     isiDropdownPL("filter-pl-brand", setBrandsPL, "All Brand"); isiDropdownPL("filter-pl-category", setCategoriesPL, "All Divisi"); let setDiscountsPL = new Set(); MASTER_DATA_PL.forEach(item => setDiscountsPL.add(item.DiscountPL)); isiDropdownPL("filter-pl-discount", setDiscountsPL, "All Discount PL");
@@ -1567,47 +1543,18 @@ function jalankanFilter() {
                     <td>Rp ${item.PriceAwal.toLocaleString('id-ID')}</td>
                     <td><strong style="color: #ec4899;">${item.DiscountPL}</strong></td>
                     <td><strong style="color: #ec4899;">Rp ${item.PricePL.toLocaleString('id-ID')}</strong></td>
-                    <td><strong style="color:#10b981;">${item.Qty.toLocaleString('id-ID')}</strong></td>
                     <td><span class="badge-status ${badgeClass}">${item.Status === 'Normal' ? 'Normal / No Change' : item.Status}</span></td>
                 </tr>`; 
             }); 
             tbody.innerHTML = html;
-
-            // SUMMARY: Jumlah Artikel & Total Qty, mengikuti data yang sedang tampil (sudah kena filter)
-            tampilkanSummaryPL(dataArray);
             
             document.getElementById('btn-download-pl').onclick = function() { 
-                let totalArtikel = dataArray.length;
-                let totalQty = dataArray.reduce((sum, item) => sum + item.Qty, 0);
-                let dataEksport = dataArray.map(item => ({ 'Brand': item.Brand, 'Category': item.Category, 'Artikel': item.Artikel, 'Deskripsi': item.Deskripsi, 'Discount Awal': item.DiscountAwal, 'Price Awal': item.PriceAwal, 'Discount PL': item.DiscountPL, 'Price PL': item.PricePL, 'Qty': item.Qty, 'Status': item.Status })); 
+                let dataEksport = dataArray.map(item => ({ 'Brand': item.Brand, 'Category': item.Category, 'Artikel': item.Artikel, 'Deskripsi': item.Deskripsi, 'Discount Awal': item.DiscountAwal, 'Price Awal': item.PriceAwal, 'Discount PL': item.DiscountPL, 'Price PL': item.PricePL, 'Status': item.Status })); 
                 const worksheet = XLSX.utils.json_to_sheet(dataEksport); 
-                // TAMBAHAN: baris ringkasan di bawah data (Jumlah Artikel & Jumlah Qty)
-                XLSX.utils.sheet_add_aoa(worksheet, [
-                    [],
-                    ['Jumlah Artikel', totalArtikel],
-                    ['Jumlah Qty', totalQty]
-                ], { origin: -1 });
                 const workbook = XLSX.utils.book_new(); 
                 XLSX.utils.book_append_sheet(workbook, worksheet, "Analisis PL"); 
                 XLSX.writeFile(workbook, `Hasil_Analisis_Auto_PL.xlsx`); 
             };
-        }
-
-        function tampilkanSummaryPL(dataArray) {
-            const totalArtikel = dataArray.length;
-            const totalQty = dataArray.reduce((sum, item) => sum + item.Qty, 0);
-            const totalMarkdown = dataArray.filter(item => item.Status === 'Markdown').length;
-            const totalMarkup = dataArray.filter(item => item.Status === 'Markup').length;
-            const totalNormal = dataArray.filter(item => item.Status === 'Normal').length;
-            const box = document.getElementById('box-summary-pl');
-            if (!box) return;
-            box.innerHTML = `
-                <div class="summary-card card-all"><div class="cat-title">Jumlah Artikel</div><div class="cat-total">${totalArtikel.toLocaleString('id-ID')}</div></div>
-                <div class="summary-card"><div class="cat-title">Total Qty</div><div class="cat-total">${totalQty.toLocaleString('id-ID')} Pcs</div></div>
-                <div class="summary-card" style="border-left:4px solid #f87171;"><div class="cat-title">Markdown</div><div class="cat-total">${totalMarkdown.toLocaleString('id-ID')}</div></div>
-                <div class="summary-card" style="border-left:4px solid #34d399;"><div class="cat-title">Markup</div><div class="cat-total">${totalMarkup.toLocaleString('id-ID')}</div></div>
-                <div class="summary-card" style="border-left:4px solid #cbd5e1;"><div class="cat-title">Normal</div><div class="cat-total">${totalNormal.toLocaleString('id-ID')}</div></div>
-            `;
         }
 
 
