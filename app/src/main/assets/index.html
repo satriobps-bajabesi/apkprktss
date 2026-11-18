@@ -801,22 +801,22 @@
                 <div class="pos-files">
                     <div class="form-group">
                         <label style="display:block; margin-bottom:8px; font-weight: 600;">📊 Stock Position Report (xls/xlsx/xlsb):</label>
-                        <input type="file" id="pos-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream">
+                        <input type="file" id="pos-file-stock" data-excel="1">
                     </div>
                     <div class="pos-lists">
                         <div class="form-group">
                             <label style="display:block; margin-bottom:8px; font-weight: 600;">📄 1. List Promo / Special Price:</label>
-                            <input type="file" id="pos-file-list1" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream">
+                            <input type="file" id="pos-file-list1" data-excel="1">
                             <select id="pos-listfor-1" class="pos-input pos-ganda-only" onchange="posBangunDaftar(); posRender();"><option value="12">Dipakai untuk: Promo 1 &amp; 2</option><option value="1">Dipakai untuk: Promo 1</option><option value="2">Dipakai untuk: Promo 2</option></select>
                         </div>
                         <div class="form-group">
                             <label style="display:block; margin-bottom:8px; font-weight: 600;">📄 2. List Promo / Special Price:</label>
-                            <input type="file" id="pos-file-list2" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream">
+                            <input type="file" id="pos-file-list2" data-excel="1">
                             <select id="pos-listfor-2" class="pos-input pos-ganda-only" onchange="posBangunDaftar(); posRender();"><option value="12">Dipakai untuk: Promo 1 &amp; 2</option><option value="1">Dipakai untuk: Promo 1</option><option value="2">Dipakai untuk: Promo 2</option></select>
                         </div>
                         <div class="form-group">
                             <label style="display:block; margin-bottom:8px; font-weight: 600;">📄 3. List Promo / Special Price:</label>
-                            <input type="file" id="pos-file-list3" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream">
+                            <input type="file" id="pos-file-list3" data-excel="1">
                             <select id="pos-listfor-3" class="pos-input pos-ganda-only" onchange="posBangunDaftar(); posRender();"><option value="12">Dipakai untuk: Promo 1 &amp; 2</option><option value="1">Dipakai untuk: Promo 1</option><option value="2">Dipakai untuk: Promo 2</option></select>
                         </div>
                     </div>
@@ -874,12 +874,12 @@
                 <div class="form-group">
                     <label style="display:block; margin-bottom:5px; font-weight: 600;">1. Upload StockPosition:</label>
                     <span style="display:block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">Supported formats: <strong>.xls, .xlsx, .xlsb</strong></span>
-                    <input type="file" id="il-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                    <input type="file" id="il-file-stock" data-excel="1" required>
                 </div>
                 <div class="form-group">
                     <label style="display:block; margin-bottom:5px; font-weight: 600;">2. Upload Merchandise Sales Report (last 3 months):</label>
                     <span style="display:block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">Used to calculate the average monthly sales (fast / slow)</span>
-                    <input type="file" id="il-file-merch" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                    <input type="file" id="il-file-merch" data-excel="1" required>
                 </div>
                 <div class="il-set">
                     <label>Months of data<input type="number" id="il-bulan" value="3" min="1" step="1"></label>
@@ -1017,11 +1017,11 @@
                 <div class="form-grid-inputs">
                     <div class="form-group">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #38bdf8;">📊 Stock Position Report (xls/xlsx/xlsb):</label>
-                        <input type="file" id="lpromo-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="lpromo-file-stock" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-lpromo">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #818cf8;">📄 List Promo (xls/xlsx/xlsb):</label>
-                        <input type="file" id="lpromo-file-list" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="lpromo-file-list" data-excel="1" required>
                     </div>
                 </div>
                 <label class="kidz-toggle" style="--kidz-c:#818cf8;">
@@ -1096,11 +1096,11 @@
                 <div class="form-grid-inputs">
                     <div class="form-group">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #38bdf8;">📊 Stock Position Report (xls/xlsx/xlsb):</label>
-                        <input type="file" id="lsp-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="lsp-file-stock" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-lsp">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #a3e635;">📄 List Special Price (xls/xlsx/xlsb):</label>
-                        <input type="file" id="lsp-file-list" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="lsp-file-list" data-excel="1" required>
                     </div>
                 </div>
                 <label class="kidz-toggle" style="--kidz-c:#a3e635;">
@@ -1221,7 +1221,7 @@
                 <div class="form-group">
                     <label style="display:block; margin-bottom:5px; font-weight: 600;">Upload File Stockan:</label>
                     <span style="display:block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">Format didukung: <strong>.xls, .xlsx, .xlsb</strong></span>
-                    <input type="file" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                    <input type="file" data-excel="1" required>
                 </div>
                 <label class="kidz-toggle" style="--kidz-c:#38bdf8;">
                     <input type="checkbox" id="kidz-stock">
@@ -1296,7 +1296,7 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-group">
                     <label style="display:block; margin-bottom:5px; font-weight: 600;">Upload File Stockan:</label>
                     <span style="display:block; font-size: 0.8rem; color: #94a3b8; margin-bottom: 10px;">Format didukung: <strong>.xls, .xlsx, .xlsb</strong></span>
-                    <input type="file" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                    <input type="file" data-excel="1" required>
                 </div>
                 <label class="kidz-toggle" style="--kidz-c:#38bdf8;">
                     <input type="checkbox" id="kidz-stock-detail">
@@ -1385,11 +1385,11 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #38bdf8;">📊 Stock Position Report (xls/xlsx/xlsb):</label>
-                        <input type="file" id="pl-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="pl-file-stock" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-pl">
                         <label style="display:block; margin-bottom:8px; font-weight: 600; color: #ec4899;">📄 PL Mentah / Price List (xls/xlsx/xlsb):</label>
-                        <input type="file" id="pl-file-mentah" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="pl-file-mentah" data-excel="1" required>
                     </div>
                 </div>
                 <label class="kidz-toggle" style="--kidz-c:#ec4899;">
@@ -1469,27 +1469,27 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="hourly-upload-grid">
                     <div class="hourly-upload-card">
                         <div class="card-num">1</div><label>Hourly Sales Report</label><div class="file-hint">Format: .xls / .xlsx</div>
-                        <input type="file" id="hourly-file-register" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required onchange="tandaiFileHourly(this, 'status-reg')">
+                        <input type="file" id="hourly-file-register" data-excel="1" required onchange="tandaiFileHourly(this, 'status-reg')">
                         <div class="file-status" id="status-reg"><div class="file-status-dot"></div><span id="status-reg-name">File terpilih</span></div>
                     </div>
                     <div class="hourly-upload-card">
                         <div class="card-num">2</div><label>Daily Cash Collection</label><div class="file-hint">Format: .xls / .xlsx</div>
-                        <input type="file" id="hourly-file-cash" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required onchange="tandaiFileHourly(this, 'status-cash')">
+                        <input type="file" id="hourly-file-cash" data-excel="1" required onchange="tandaiFileHourly(this, 'status-cash')">
                         <div class="file-status" id="status-cash"><div class="file-status-dot"></div><span id="status-cash-name">File terpilih</span></div>
                     </div>
                     <div class="hourly-upload-card">
                         <div class="card-num">3</div><label>Merchandise Sales Report</label><div class="file-hint">Format: .xls / .xlsx</div>
-                        <input type="file" id="hourly-file-merch" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required onchange="tandaiFileHourly(this, 'status-merch')">
+                        <input type="file" id="hourly-file-merch" data-excel="1" required onchange="tandaiFileHourly(this, 'status-merch')">
                         <div class="file-status" id="status-merch"><div class="file-status-dot"></div><span id="status-merch-name">File terpilih</span></div>
                     </div>
                     <div class="hourly-upload-card optional">
                         <div class="card-num" style="background: #475569;">4</div><label>Traffic Counter <span>(Optional)</span></label><div class="file-hint">Format: .xls / .csv / .txt</div>
-                        <input type="file" id="hourly-file-traffic" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream,.csv,.txt,text/csv,text/plain" onchange="tandaiFileHourly(this, 'status-traffic')">
+                        <input type="file" id="hourly-file-traffic" data-excel="1" onchange="tandaiFileHourly(this, 'status-traffic')">
                         <div class="file-status" id="status-traffic"><div class="file-status-dot" style="background:#475569;"></div><span id="status-traffic-name" style="color:#94a3b8;">File terpilih</span></div>
                     </div>
                     <div class="hourly-upload-card optional">
                         <div class="card-num" style="background: #475569;">5</div><label>Brand Golf <span>(Optional)</span></label><div class="file-hint">Format: .xls / .xlsx</div>
-                        <input type="file" id="hourly-file-golf" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" onchange="tandaiFileHourly(this, 'status-golf')">
+                        <input type="file" id="hourly-file-golf" data-excel="1" onchange="tandaiFileHourly(this, 'status-golf')">
                         <div class="file-status" id="status-golf"><div class="file-status-dot" style="background:#475569;"></div><span id="status-golf-name" style="color:#94a3b8;">File terpilih</span></div>
                     </div>
                 </div>
@@ -1587,19 +1587,19 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group form-group-sales">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#10b981;">📄 1. Sales Person Report (xls/xlsx):</label>
-                        <input type="file" id="sales-file-report" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="sales-file-report" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-sales">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#10b981;">📄 2. Sales Register Invoice Detail (xls/xlsx):</label>
-                        <input type="file" id="sales-file-register" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="sales-file-register" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-sales">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#10b981;">📄 3. Daily Cash Collection (xls/xlsx):</label>
-                        <input type="file" id="sales-file-cash" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="sales-file-cash" data-excel="1" required>
                     </div>
                     <div class="form-group form-group-sales">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#10b981;">📄 4. Merchandise Sales Report (xls/xlsx):</label>
-                        <input type="file" id="sales-file-merchandise" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required>
+                        <input type="file" id="sales-file-merchandise" data-excel="1" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-submit btn-submit-sales">Proses Komparasi Penjualan Sales</button>
@@ -1669,11 +1669,11 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group" style="border-color: #3b82f6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#3b82f6;">📄 1. Merchandise Sales Report (xls/xlsx):</label>
-                        <input type="file" id="top5-file-merch" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border-color: #3b82f6;">
+                        <input type="file" id="top5-file-merch" data-excel="1" required style="border-color: #3b82f6;">
                     </div>
                     <div class="form-group" style="border-color: #3b82f6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#3b82f6;">📄 2. Category Gender (xls/xlsx):</label>
-                        <input type="file" id="top5-file-gender" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border-color: #3b82f6;">
+                        <input type="file" id="top5-file-gender" data-excel="1" required style="border-color: #3b82f6;">
                     </div>
                 </div>
                 <button type="submit" class="btn-submit btn-submit-top5">Proses Skechers Top 5</button>
@@ -1703,15 +1703,15 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group" style="border-color: #f43f5e;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#f43f5e;">📄 1. Stock Position Report (xls/xlsx):</label>
-                        <input type="file" id="uploadStockPosition" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border: 2px dashed rgba(244, 63, 94, 0.4);">
+                        <input type="file" id="uploadStockPosition" data-excel="1" required style="border: 2px dashed rgba(244, 63, 94, 0.4);">
                     </div>
                     <div class="form-group" style="border-color: #f43f5e;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#f43f5e;">📄 2. Dispatch Order Received (xls/xlsx):</label>
-                        <input type="file" id="uploadDispatchOrder" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border: 2px dashed rgba(244, 63, 94, 0.4);">
+                        <input type="file" id="uploadDispatchOrder" data-excel="1" required style="border: 2px dashed rgba(244, 63, 94, 0.4);">
                     </div>
                     <div class="form-group" style="border-color: #f43f5e;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#f43f5e;">📄 3. Upload E-POD (xls/xlsx):</label>
-                        <input type="file" id="uploadEpod" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" style="border: 2px dashed rgba(244, 63, 94, 0.4);">
+                        <input type="file" id="uploadEpod" data-excel="1" style="border: 2px dashed rgba(244, 63, 94, 0.4);">
                     </div>
                 </div>
                 <button type="button" class="btn-submit" style="background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%); width: 100%; margin-top: 10px;" onclick="prosesNewArrival()">✨ Proses Cek New Arrival</button>
@@ -1780,7 +1780,7 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group form-group-promo" style="border-color: #f59e0b;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#f59e0b;">📄 Sales Register Invoice Detail (xls/xlsx):</label>
-                        <input type="file" id="promo-file-register" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border: 2px dashed rgba(245, 158, 11, 0.4);">
+                        <input type="file" id="promo-file-register" data-excel="1" required style="border: 2px dashed rgba(245, 158, 11, 0.4);">
                     </div>
                 </div>
                 <button type="button" class="btn-submit btn-submit-promo" style="width: 100%; margin-top: 10px;" onclick="prosesTrxPromo()">🎯 Proses Cek Trx Promo</button>
@@ -1839,7 +1839,7 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group form-group-physinv" style="border-color: #14b8a6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#2dd4bf;">📄 1. Stock Position Detail (xls/xlsx):</label>
-                        <input type="file" id="physinv-noloc-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border: 2px dashed rgba(20, 184, 166, 0.4);">
+                        <input type="file" id="physinv-noloc-file-stock" data-excel="1" required style="border: 2px dashed rgba(20, 184, 166, 0.4);">
                     </div>
                     <div class="form-group form-group-physinv" style="border-color: #14b8a6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#2dd4bf;">📄 2. Hasil Scan (.txt):</label>
@@ -1919,7 +1919,7 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
                 <div class="form-grid-inputs">
                     <div class="form-group form-group-physinv" style="border-color: #14b8a6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#2dd4bf;">📄 1. Stock Position Detail (xls/xlsx):</label>
-                        <input type="file" id="physinv-loc-file-stock" accept=".xls,.xlsx,.xlsb,.xlsm,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.binary.macroEnabled.12,application/octet-stream" required style="border: 2px dashed rgba(20, 184, 166, 0.4);">
+                        <input type="file" id="physinv-loc-file-stock" data-excel="1" required style="border: 2px dashed rgba(20, 184, 166, 0.4);">
                     </div>
                     <div class="form-group form-group-physinv" style="border-color: #14b8a6;">
                         <label style="display:block; margin-bottom:5px; font-weight:600; color:#2dd4bf;">📄 2. Hasil Scan (.txt):</label>
@@ -2125,11 +2125,11 @@ onclick="urutkanData('Category')">Divisi ⇅</th>
         // ================= VALIDASI FILE EXCEL (xls / xlsx / xlsb / xlsm / csv) =================
         document.addEventListener('change', function (e) {
             const el = e.target;
-            if (!el || el.type !== 'file' || !/xlsb/i.test(el.getAttribute('accept') || '')) return;
+            if (!el || el.type !== 'file' || !el.hasAttribute('data-excel')) return;
             const f = el.files && el.files[0]; if (!f) return;
             const ext = (f.name.split('.').pop() || '').toLowerCase();
-            if (!['xls', 'xlsx', 'xlsb', 'xlsm', 'csv'].includes(ext)) {
-                alert('Format file "' + f.name + '" tidak didukung.\nGunakan file Excel: .xls, .xlsx, .xlsb');
+            if (!['xls', 'xlsx', 'xlsb', 'xlsm', 'csv', 'txt'].includes(ext)) {
+                alert('Format file "' + f.name + '" tidak didukung.\nGunakan file Excel: .xls, .xlsx, .xlsb (atau .csv/.txt jika diminta)');
                 el.value = ''; return;
             }
             if (f.size > 80 * 1024 * 1024) {
