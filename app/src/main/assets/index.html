@@ -6142,7 +6142,7 @@ let categoryTotals = { Womens: 0, Mens: 0, Kids: 0, Apparel: 0, Accessories: 0, 
         }
         async function posKameraToggle() {
             if (!posEl('pos-cam-cek').checked) { posKameraStop(); posKameraStatus(''); return; }
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { posKameraGagal('Kamera tidak tersedia di browser atau alamat ini (butuh HTTPS atau file lokal).'); return; }
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { posKameraGagal('Kamera tidak tersedia di aplikasi/browser ini. Pada APK, pastikan izin CAMERA sudah diaktifkan di MainActivity (lihat panduan), atau buka lewat HTTPS.'); return; }
             posEl('pos-cam').style.display = 'block'; posKameraStatus('Meminta izin kamera...');
             try {
                 const v = posEl('pos-cam-video');
@@ -6163,7 +6163,12 @@ let categoryTotals = { Womens: 0, Mens: 0, Kids: 0, Apparel: 0, Accessories: 0, 
                     POS_CAM.zx.decodeFromVideoDevice(null, 'pos-cam-video', (res) => { if (res) posKameraHasil(res.getText()); });
                 }
             } catch (e) {
-                posKameraGagal(e && e.name === 'NotAllowedError' ? 'Izin kamera ditolak. Izinkan kamera untuk halaman ini di pengaturan browser, lalu centang lagi.' : 'Kamera gagal dibuka: ' + (e && e.message || e));
+                const nm = e && e.name, apk = /; wv\)|Version\/[\d.]+ Chrome/.test(navigator.userAgent);
+                posKameraGagal(nm === 'NotAllowedError' || nm === 'SecurityError'
+                    ? 'Izin kamera ditolak. ' + (apk ? 'Buka Pengaturan HP > Aplikasi > (aplikasi ini) > Izin > Kamera > Izinkan, lalu centang lagi.' : 'Izinkan kamera untuk halaman ini di pengaturan browser, lalu centang lagi.')
+                    : nm === 'NotFoundError' ? 'Kamera tidak ditemukan di perangkat ini.'
+                    : nm === 'NotReadableError' ? 'Kamera sedang dipakai aplikasi lain. Tutup aplikasi itu lalu coba lagi.'
+                    : 'Kamera gagal dibuka: ' + (e && e.message || e));
             }
         }
         document.addEventListener('visibilitychange', () => { if (document.hidden) posKameraStop(); });
