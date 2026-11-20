@@ -20,22 +20,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
 
-      - name: Setup App Icon
-        run: |
-          mkdir -p app/src/main/res/mipmap-xxxhdpi
-          mkdir -p app/src/main/res/mipmap-anydpi-v26
-          mkdir -p app/src/main/res/drawable
-          mkdir -p app/src/main/res/values
-
-          cp icon-512.png app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-          cp icon-512.png app/src/main/res/drawable/ic_launcher_foreground.png
-
-          printf '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <color name="ic_launcher_background">#081A38</color>\n</resources>\n' > app/src/main/res/values/ic_launcher_background.xml
-
-          printf '<?xml version="1.0" encoding="utf-8"?>\n<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n    <background android:drawable="@color/ic_launcher_background"/>\n    <foreground android:drawable="@drawable/ic_launcher_foreground"/>\n</adaptive-icon>\n' > app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
-
-          cp app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
-
       - name: Build APK
         run: gradle assembleDebug
 
